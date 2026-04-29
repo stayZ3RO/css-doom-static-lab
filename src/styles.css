@@ -119,6 +119,7 @@ main {
 }
 
 button,
+.primary-button,
 .secondary-button {
   border: 0;
   border-radius: 999px;
@@ -129,11 +130,13 @@ button,
 }
 
 button {
+  button,
+.primary-button {
   background: var(--accent);
   color: white;
 }
 
-button:hover {
+  button:hover {
   background: var(--accent-dark);
 }
 

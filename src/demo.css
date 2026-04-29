@@ -1,0 +1,339 @@
+:root {
+  --bg: #080808;
+  --panel: #151515;
+  --panel-light: #222;
+  --text: #f4f4f4;
+  --muted: #b9b9b9;
+  --accent: #ff3b3b;
+  --border: #333;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top, #242424 0, #080808 45%),
+    var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.demo-shell {
+  width: min(1200px, 92vw);
+  margin: 0 auto;
+  padding: 2rem 0 4rem;
+}
+
+.demo-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.35rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+.demo-header p {
+  color: var(--muted);
+  max-width: 720px;
+}
+
+.back-link {
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.85rem 1rem;
+  text-decoration: none;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.game-frame {
+  background: #050505;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 1rem;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6);
+}
+
+.viewport {
+  position: relative;
+  height: 620px;
+  overflow: hidden;
+  border: 2px solid #3a3a3a;
+  border-radius: 20px;
+  background: #111;
+  perspective: 700px;
+}
+
+.viewport::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.04) 0,
+    rgba(255, 255, 255, 0.04) 1px,
+    transparent 1px,
+    transparent 5px
+  );
+  opacity: 0.35;
+}
+
+.sky {
+  position: absolute;
+  inset: 0 0 50%;
+  background:
+    radial-gradient(circle at center, rgba(255, 59, 59, 0.25), transparent 30%),
+    linear-gradient(#1d1d1d, #080808);
+}
+
+.world {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform 220ms ease;
+}
+
+.floor {
+  position: absolute;
+  left: -20%;
+  right: -20%;
+  bottom: -16%;
+  height: 58%;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(#272727, #0b0b0b);
+  background-size: 70px 70px, 70px 70px, auto;
+  transform: rotateX(72deg);
+  transform-origin: bottom;
+}
+
+.ceiling {
+  position: absolute;
+  left: -20%;
+  right: -20%;
+  top: -20%;
+  height: 42%;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(#080808, #1b1b1b);
+  background-size: 70px 70px, 70px 70px, auto;
+  transform: rotateX(-72deg);
+  transform-origin: top;
+}
+
+.wall {
+  position: absolute;
+  top: 18%;
+  height: 58%;
+  border: 1px solid rgba(255,255,255,0.08);
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(135deg, #3a1111, #171717);
+  background-size: 80px 80px, 80px 80px, auto;
+}
+
+.wall-left {
+  left: -12%;
+  width: 42%;
+  transform: rotateY(58deg);
+  transform-origin: right;
+}
+
+.wall-right {
+  right: -12%;
+  width: 42%;
+  transform: rotateY(-58deg);
+  transform-origin: left;
+}
+
+.wall-center {
+  left: 35%;
+  width: 30%;
+  transform: translateZ(-260px);
+  filter: brightness(0.75);
+}
+
+.enemy {
+  position: absolute;
+  left: 50%;
+  top: 43%;
+  width: 80px;
+  height: 120px;
+  transform: translateX(-50%);
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.enemy-head {
+  width: 42px;
+  height: 42px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #c53131;
+  box-shadow: 0 0 24px rgba(255, 59, 59, 0.7);
+}
+
+.enemy-body {
+  width: 80px;
+  height: 78px;
+  margin-top: 4px;
+  background: linear-gradient(#542020, #1f1f1f);
+  clip-path: polygon(50% 0, 100% 35%, 78% 100%, 22% 100%, 0 35%);
+}
+
+.enemy.hit {
+  transform: translateX(-50%) scale(0.85);
+  opacity: 0.35;
+}
+
+.weapon {
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 220px;
+  height: 190px;
+  transform: translateX(-50%);
+  transition: transform 90ms ease;
+  z-index: 4;
+}
+
+.weapon.firing {
+  transform: translateX(-50%) translateY(18px);
+}
+
+.barrel {
+  position: absolute;
+  left: 50%;
+  bottom: 90px;
+  width: 54px;
+  height: 120px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #111, #777, #222);
+  border-radius: 16px 16px 6px 6px;
+}
+
+.gun-body {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 220px;
+  height: 110px;
+  transform: translateX(-50%);
+  background: linear-gradient(#555, #171717);
+  border: 2px solid #777;
+  border-radius: 26px 26px 0 0;
+}
+
+.crosshair {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  transform: translate(-50%, -50%);
+  color: rgba(255,255,255,0.8);
+  font-size: 2rem;
+  z-index: 5;
+}
+
+.hud {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  z-index: 6;
+}
+
+.hud div {
+  background: rgba(0,0,0,0.7);
+  border: 1px solid #444;
+  border-radius: 14px;
+  padding: 0.8rem;
+  text-align: center;
+}
+
+.hud span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.hud strong {
+  font-size: 1.7rem;
+  color: var(--accent);
+}
+
+.controls {
+  margin-top: 2rem;
+  background: rgba(21,21,21,0.85);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 1.5rem;
+}
+
+.control-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(140px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.9rem 1rem;
+  background: var(--accent);
+  color: white;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #a81f1f;
+}
+
+.event-log {
+  border-left: 4px solid var(--accent);
+  padding-left: 1rem;
+  color: var(--muted);
+}
+
+@media (max-width: 800px) {
+  .demo-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .viewport {
+    height: 520px;
+  }
+
+  .control-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

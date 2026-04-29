@@ -1,1 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>CSS DOOM Static Lab</title>
+
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <p class="eyebrow">Static Hosting Lab</p>
+      <h1>CSS DOOM Static Lab</h1>
+      <p class="subtitle">
+        A browser-based DOOM/CSS experiment deployed from GitHub using static site hosting.
+      </p>
+    </div>
+
+    <nav class="site-nav">
+      <a href="#about">About</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#docs">Docs</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <h2>Frontend-only deployment. No VM required.</h2>
+        <p>
+          This project demonstrates how a static HTML, CSS, and JavaScript site can be version-controlled
+          in GitHub and deployed publicly without a backend server, database, Docker container, or virtual machine.
+        </p>
+
+        <div class="button-row">
+          <button id="launchButton">Launch Static Demo</button>
+          <a class="secondary-button" href="https://github.com/stayZ3RO/css-doom-static-lab" target="_blank" rel="noreferrer">
+            View GitHub Repo
+          </a>
+        </div>
+
+        <p id="statusMessage" class="status-message">
+          Status: Static site scaffold loaded.
+        </p>
+      </div>
+
+      <div class="demo-panel" aria-label="CSS DOOM visual placeholder">
+        <div class="screen">
+          <div class="scanlines"></div>
+          <div class="doom-title">CSS DOOM</div>
+          <div class="doom-subtitle">STATIC LAB</div>
+          <div class="hud">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="content-section">
+      <h2>About This Project</h2>
+      <p>
+        CSS DOOM Static Lab is a portfolio project focused on static web hosting, GitHub-based deployment,
+        and clean documentation. The goal is to keep the architecture simple while still showing practical
+        web deployment skills.
+      </p>
+    </section>
+
+    <section id="architecture" class="content-section">
+      <h2>Architecture</h2>
+
+      <div class="architecture-box">
+        <span>Local Files</span>
+        <span>→</span>
+        <span>GitHub Repo</span>
+        <span>→</span>
+        <span>Static Hosting</span>
+        <span>→</span>
+        <span>Public Website</span>
+      </div>
+    </section>
+
+    <section id="docs" class="content-section">
+      <h2>Documentation Goals</h2>
+      <ul>
+        <li>Explain why this project does not need a VM or backend.</li>
+        <li>Document the GitHub workflow from local changes to public deployment.</li>
+        <li>Capture screenshots for portfolio proof.</li>
+        <li>Prepare future Cloudflare Pages and custom domain notes.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Built as a static web hosting lab for GitHub portfolio documentation.</p>
+  </footer>
+
+  <script src="src/main.js"></script>
+</body>
+</html>

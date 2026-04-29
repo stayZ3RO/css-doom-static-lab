@@ -224,7 +224,7 @@ export function createProjectile(projectileId, { type, width, height, sprite, st
     el.className = PROJECTILE_CLASS[type] || 'projectile';
     el.style.width = `${width}px`;
     el.style.height = `${height}px`;
-    el.style.backgroundImage = `url('/assets/sprites/${sprite}.png')`;
+    el.style.backgroundImage = `url('./assets/sprites/${sprite}.png')`;
     el.style.backgroundSize = `${width}px ${height}px`;
     el.style.setProperty('--start-x', startX);
     el.style.setProperty('--start-y', startY);

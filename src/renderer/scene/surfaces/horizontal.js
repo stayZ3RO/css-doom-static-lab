@@ -104,7 +104,7 @@ export function buildHorizontalSurface(sector, height, textureName, surfaceType)
      */
     if (textureName && textureName !== NO_TEXTURE && textureName !== SKY_TEXTURE) {
         surfaceElement.dataset.texture = textureName;
-        surfaceElement.style.backgroundImage = `url('/assets/flats/${textureName}.png')`;
+        surfaceElement.style.backgroundImage = `url('./assets/flats/${textureName}.png')`;
     } else if (textureName === SKY_TEXTURE) {
         surfaceElement.style.backgroundColor = '#1a1a3a';
     } else {

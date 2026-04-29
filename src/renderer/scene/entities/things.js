@@ -52,7 +52,7 @@ export function buildThings() {
             thingContainer.appendChild(spriteElement);
         } else {
             const imageElement = document.createElement('img');
-            imageElement.src = `/assets/sprites/${staticSprite}.png`;
+            imageElement.src = `./assets/sprites/${staticSprite}.png`;
             imageElement.draggable = false;
             thingContainer.appendChild(imageElement);
         }

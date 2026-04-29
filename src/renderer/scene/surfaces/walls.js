@@ -32,7 +32,7 @@ export function createWallElement(wall, floorZ, ceilZ) {
     el.style.setProperty('--end-y', wall.end.y);
     el.style.setProperty('--floor-z', floorZ);
     el.style.setProperty('--ceiling-z', ceilZ);
-    el.style.backgroundImage = `url('/assets/textures/${wall.texture}.png')`;
+    el.style.backgroundImage = `url('./assets/textures/${wall.texture}.png')`;
     el.style.setProperty('--texture-offset-x', wall.xOffset);
     el.style.setProperty('--texture-offset-y', wall.yOffset);
     el.classList.add('unpegged');
@@ -83,7 +83,7 @@ export function buildWalls() {
         wallElement.style.setProperty('--ceiling-z', wall.topHeight);
 
         wallElement.dataset.texture = textureName;
-        wallElement.style.backgroundImage = `url('/assets/textures/${textureName}.png')`;
+        wallElement.style.backgroundImage = `url('./assets/textures/${textureName}.png')`;
         wallElement.style.setProperty('--texture-offset-x', wall.xOffset);
         wallElement.style.setProperty('--texture-offset-y', wall.yOffset);
 

@@ -88,7 +88,7 @@ function preloadTextures() {
     }
 
     for (const el of dom.scene.querySelectorAll('.switch[data-texture^="SW1"]')) {
-        urls.add(`/assets/textures/SW2${el.dataset.texture.slice(3)}.png`);
+        urls.add(`./assets/textures/SW2${el.dataset.texture.slice(3)}.png`);
     }
 
     for (const img of dom.scene.querySelectorAll('img[src]')) {
